@@ -1,6 +1,6 @@
-# EduBuddy-AI
+# PathFinder-AI
 
-EduBuddy-AI is an AI-powered chatbot designed to provide educational assistance and reduce inequalities in education by empowering marginalized groups through skill development. The project leverages the OpenAI API to facilitate intelligent and engaging conversations on various subjects.
+PathFinder-AI is an AI-powered chatbot designed to provide educational assistance and reduce inequalities in education by empowering marginalized groups through skill development. The project leverages the OpenAI API to facilitate intelligent and engaging conversations on various subjects.
 
 ## Features
 
