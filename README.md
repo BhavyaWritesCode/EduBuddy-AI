@@ -5,7 +5,7 @@ EduBuddy-AI is an AI-powered chatbot designed to provide educational assistance 
 ## Features
 
 - AI-powered chatbot that can answer educational queries.
-- Supports multiple subjects, including technology, science, and humanities.
+- Supports multiple subjects, including technology, science.
 - Helps marginalized groups by offering skill development opportunities through accessible information.
 
 ## Installation
