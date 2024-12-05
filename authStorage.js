@@ -24,6 +24,7 @@ function loginUser(email, password) {
     const validUser = users.find(user => user.email === email && user.password === password);
     if (validUser) {
         
+        
 
         localStorage.setItem("loggedInUser", JSON.stringify(validUser)); // Save logged-in user
         return true;

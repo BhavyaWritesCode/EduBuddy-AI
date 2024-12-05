@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PathFinder-AI - Inclusive Education Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="api.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
@@ -59,7 +60,7 @@
                 
                 <!-- Language Selector and Login Button -->
                 <div class="flex items-center space-x-4">
-                    <a href="homepage.html"><u>Contact: +91 555 0000 777</u></a>
+                    <a href="homepage.html"><u>Contact: +91 555 000 7777</u></a>
                     
                 </div>
             </div>
@@ -72,7 +73,7 @@
         <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl font-bold text-white mb-8 fade-in" id="heroTitle">Empowering Education Through AI</h1>
             <p class="text-xl text-white mb-8 fade-in" id="heroSubtitle">Learn at your own pace, in your preferred language</p>
-            <button class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            <button onclick="scrollToCourses()" class="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
                 Start Learning Now
             </button>
         </div>
@@ -83,7 +84,7 @@
         <h2 class="text-3xl font-bold text-center mb-8 fade-in">Meet Your AI Tutor</h2>
         <div class="bg-white rounded-lg shadow-lg p-6">
             <div class="ai-chat border rounded-lg p-4 mb-4">
-                <div class="chat-messages space-y-4">
+                <div class="chat-messages space-y-4" id="chatMessages">
                     <div class="flex items-start">
                         <div class="bg-green-100 rounded-lg p-3 max-w-[80%]">
                             <p class="text-green-800">Hello! I'm your AI tutor. I can help you with Mathematics, Science, History, UPSC preparation, and IIT JEE. What would you like to learn today?</p>
@@ -99,74 +100,125 @@
     </div>
 
     <!-- Subjects Grid -->
-    <div class="bg-gray-100 py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Available Subjects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Mathematics -->
-                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-green-600 flex items-center justify-center">
-                        <i class="bi bi-calculator text-5xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Mathematics</h3>
-                        <p class="text-gray-600 mb-4">Algebra, Calculus, Geometry, and more</p>
-                        <a href="subjects/mathematics.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
-                    </div>
+<div id="availableSubjects" class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 fade-in">Available Subjects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Mathematics -->
+            <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-green-600 flex items-center justify-center">
+                    <i class="bi bi-calculator text-5xl text-white"></i>
                 </div>
-
-                <!-- Science -->
-                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-green-600 flex items-center justify-center">
-                        <i class="bi bi-molecule text-5xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">Science</h3>
-                        <p class="text-gray-600 mb-4">Physics, Chemistry, Biology</p>
-                        <a href="subjects/science.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
-                    </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2">Mathematics</h3>
+                    <p class="text-gray-600 mb-4">Algebra, Calculus, Geometry, and more</p>
+                    <a href="subjects/mathematics.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
                 </div>
+            </div>
 
-                <!-- History -->
-                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-green-600 flex items-center justify-center">
-                        <i class="bi bi-book text-5xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">History</h3>
-                        <p class="text-gray-600 mb-4">World History, Indian History</p>
-                        <a href="subjects/history.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
-                    </div>
+            <!-- Science -->
+            <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-green-600 flex items-center justify-center">
+                    <i class="bi bi-molecule text-5xl text-white"></i>
                 </div>
-
-                <!-- UPSC -->
-                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-green-600 flex items-center justify-center">
-                        <i class="bi bi-award text-5xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">UPSC Preparation</h3>
-                        <p class="text-gray-600 mb-4">Complete Civil Services Guide</p>
-                        <a href="subjects/upsc.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
-                    </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2">Science</h3>
+                    <p class="text-gray-600 mb-4">Physics, Chemistry, Biology</p>
+                    <a href="subjects/science.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
                 </div>
+            </div>
 
-                <!-- IIT JEE -->
-                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="h-48 bg-green-600 flex items-center justify-center">
-                        <i class="bi bi-mortarboard text-5xl text-white"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold text-xl mb-2">IIT JEE</h3>
-                        <p class="text-gray-600 mb-4">Engineering Entrance Preparation</p>
-                        <a href="subjects/iit-jee.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
-                    </div>
+            <!-- History -->
+            <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-green-600 flex items-center justify-center">
+                    <i class="bi bi-book text-5xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2">History</h3>
+                    <p class="text-gray-600 mb-4">World History, Indian History</p>
+                    <a href="subjects/history.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
+                </div>
+            </div>
+
+            <!-- UPSC -->
+            <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-green-600 flex items-center justify-center">
+                    <i class="bi bi-award text-5xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2">UPSC Preparation</h3>
+                    <p class="text-gray-600 mb-4">Complete Civil Services Guide</p>
+                    <a href="subjects/upsc.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
+                </div>
+            </div>
+
+            <!-- IIT JEE -->
+            <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="h-48 bg-green-600 flex items-center justify-center">
+                    <i class="bi bi-mortarboard text-5xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-semibold text-xl mb-2">IIT JEE</h3>
+                    <p class="text-gray-600 mb-4">Engineering Entrance Preparation</p>
+                    <a href="subjects/iit-jee.html" class="block bg-green-600 text-white px-4 py-2 rounded-lg w-full hover:bg-green-700 transition text-center">Start Learning</a>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
     
     <script>
-        // Same JavaScript code as before
+        
+            // AI Tutor Chat Functionality
+            function sendMessage() {
+                const input = document.getElementById('userInput');
+                const message = input.value.trim();
+                if (message) {
+                    const chatMessages = document.getElementById('chatMessages');
+                    // User message
+                    chatMessages.innerHTML += `
+                        <div class="flex items-end justify-end">
+                            <div class="bg-green-600 text-white rounded-lg p-3 max-w-[80%]">
+                                <p>${message}</p>
+                            </div>
+                        </div>
+                    `;
+                    // AI response (simulated)
+                    setTimeout(() => {
+                        chatMessages.innerHTML += `
+                            <div class="flex items-start">
+                                <div class="bg-green-100 rounded-lg p-3 max-w-[80%]">
+                                    <p class="text-green-800">I understand you're interested in learning about "${message}". Let me help you with that. What specific aspect would you like to explore?</p>
+                                </div>
+                            </div>
+                        `;
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 1000);
+                    input.value = '';
+                }
+            }
+    
+            // Handle enter key in chat
+            document.getElementById('userInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+    
+            // Handle navigation
+            document.querySelectorAll('a[href^="/"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('Navigating to: ' + link.getAttribute('href'));
+                });
+            });
+            function scrollToCourses() {
+                const coursesSection = document.getElementById('availableSubjects');
+                coursesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        
     </script>
+    
 </body>
 </html>
